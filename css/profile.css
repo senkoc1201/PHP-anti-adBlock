@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+}
+
+/* Wrapper for content */
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 15px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Container Card */
+.container {
+    background-color: rgba(27, 69, 77, 0.473);
+    border-radius: 12px;
+    padding: 30px 25px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+}
+
+/* Title */
+.card-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form fields */
+.card-body form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Field row */
+.card-body form>div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Label */
+.card-body label {
+    font-size: 16px;
+    min-width: 120px;
+    color: #ddd;
+}
+
+/* Input */
+.card-body input[type="text"],
+.card-body input[type="password"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    background: #fff;
+    color: #333;
+    transition: box-shadow 0.3s ease;
+}
+
+.card-body input:focus {
+    box-shadow: 0 0 0 2px #0C86F4;
+}
+
+/* Submit Button */
+.button {
+    align-self: flex-end;
+    background-color: #0C86F4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #095bb5;
+}
+
+/* Divider for password section */
+.card-body:not(:first-child) {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 30px;
+    /* margin-top: 30px; */
+}
+
+/* Alert transition */
+.alert {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    .card-body form>div {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card-body label {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .button {
+        align-self: stretch;
+        text-align: center;
+    }
+    .container {
+        width: 600px !important;  /* Force fixed width */
+        max-width: 600px !important;  /* Maintain max-width */
+        padding: 30px 25px !important;  /* Keep original padding */
+        margin: 0 auto !important;  /* Center the container */
+    }
+}
