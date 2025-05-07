@@ -1,11 +1,11 @@
 <?php
 include_once '../config.php';
 
-// session_start();
-// if (!isset($_SESSION['username'])) {
-//     header("Location: login.php");
-//     exit();
-// }
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -136,7 +136,7 @@ if (isset($_POST['deleteall'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temporary Blocks</title>
     <link rel="stylesheet" type="text/css" href="../css/index.css" />
-    <link rel="stylesheet" type="text/css" href="../css/admin.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../css/admin.css" /> -->
 </head>
 
 <body>
@@ -149,7 +149,7 @@ if (isset($_POST['deleteall'])) {
                         <h3>Search By IP or Finger print</h3>
                         <form method='get' action="index.php" id="searchForm">
                             <input type='text' placeholder="Search" name='search' value='<?php echo $searchTerm; ?>' style="padding: 12px; border: 1px solid #ccc; border-radius: 6px; background-color: #2c3e50; color: white; font-size: 14px; transition: border-color 0.3s ease;">
-                            <input type='submit' value='Submit'>
+                            <input type='submit' value='Submit' style="background: #0C86F4; color: white ; border: none;border-radius: 5px;padding: 12px;">
                             <input type="hidden" name="filter_status" id="hidden_search_term" value="<?php echo $filterStatus; ?>">
                         </form>
                     </th>
@@ -162,7 +162,7 @@ if (isset($_POST['deleteall'])) {
                                 <?php endforeach; ?>
                             </select>
                             <input type="hidden" name="search" id="hidden_filter_status" value="<?php echo $searchTerm; ?>">
-                            <button type="submit">Apply</button>
+                            <button type="submit" style="background: #0C86F4; color: white; border: none; border-radius: 5px; padding: 12px;">Apply</button>
                         </form>
                     </th>
                 </tr>
@@ -171,8 +171,8 @@ if (isset($_POST['deleteall'])) {
         <form method="post">
             <div style="display: flex;justify-content: center; gap: 10px; float: right;">
                 <div style="float: right; padding-bottom: 20px;">
-                    <button type="submit" name="deleteselected" id="deleteselected" style="background: #0C86F4; color: white ; border: none;border-radius: 5px;padding: 8px;">Delete Selected</button>
-                    <button type="submit" name="deleteall" id="deleteall" style="background: #0C86F4; color: white; border: none; border-radius: 5px; padding: 8px;">Delete All</button>
+                    <button type="submit" name="deleteselected" id="deleteselected" style="background: #0C86F4; color: white ; border: none;border-radius: 5px;padding: 12px;">Delete Selected</button>
+                    <button type="submit" name="deleteall" id="deleteall" style="background: #0C86F4; color: white; border: none; border-radius: 5px; padding: 12px;">Delete All</button>
                 </div>
             </div>
             <table class="table table-bordered" id="users-list">

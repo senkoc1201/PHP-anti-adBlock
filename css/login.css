@@ -1,12 +1,12 @@
-/* Modern Login Page Styles */
+/* Dark Modern Login Page Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    height: 100vh;
+    background: linear-gradient(135deg, #181f2a 0%, #232b3e 100%);
+    min-height: 100vh;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
 }
 
 .container {
@@ -16,69 +16,73 @@ body {
 }
 
 .login-box {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+    background: #232b3e;
+    border-radius: 16px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    padding: 36px 32px 32px 32px;
     text-align: center;
 }
 
 .login-title {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
+    color: #fff;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+    text-align: left;
 }
 
 .form-control-label {
     display: block;
     font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
-    text-align: left;
+    color: #bfc9da;
+    margin-bottom: 7px;
 }
 
 .form-control {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 12px;
+    background: #181f2a;
+    border: 1px solid #2e3a55;
+    border-radius: 8px;
+    color: #fff;
     font-size: 16px;
     transition: border-color 0.3s;
 }
 
 .form-control:focus {
-    border-color: #4a90e2;
+    border-color: #2196f3;
     outline: none;
 }
 
 .btn {
-    background-color: #4a90e2;
-    color: white;
+    width: 100%;
+    background-color: #2196f3;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border-radius: 8px;
+    padding: 12px 0;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.2s;
+    margin-top: 10px;
 }
 
 .btn:hover {
-    background-color: #357ab8;
+    background: #1769aa;
 }
 
 .alert {
     padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    background: #2e3a55;
+    color: #ffb3b3;
+    border: 1px solid #ff4d4d;
+    font-size: 15px;
 }
