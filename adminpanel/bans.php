@@ -150,7 +150,7 @@ $conn = null;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permanent Blocks</title>
-    <link rel="stylesheet" type="text/css" href="../css/admin.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../css/admin.css" />  -->
     <link rel="stylesheet" type="text/css" href="../css/bans.css" />
 </head>
 
@@ -159,12 +159,12 @@ $conn = null;
     <div class="content-wrapper">
         <div>
             <div class="content-card">
-                <div class="card-body" style="max-width: 500px; background: #1a2a30; border-radius: 10px; padding: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);     margin-top: 5rem; overflow: hidden; transition: all 0.3s ease-in-out;">
+                <div class="card-body" style="max-width: 600px; background: #1a2a30; border-radius: 10px; padding: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);     margin-top: 5rem; overflow: hidden; transition: all 0.3s ease-in-out;">
                     <form action="bans.php" method="POST" style="display: flex; margin-top: 3rem; flex-direction: column; gap: 20px;">
                         <div class="rows" style="display:flex;">
                             <!-- <div> -->
                                 <label for="ip_from" style="font-size: 16px; font-weight: bold; color: #ccc; margin-bottom: 6px;">IP from or Single IP</label>
-                                <input type="text" inputmode="text" pattern="^[a-f0-9.:]+$" minlength="5" maxlength="45" class="form-control" id="ip_from" name="ip_from" value="" style="width: 60%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; background-color: #2c3e50; color: white; font-size: 14px; transition: border-color 0.3s ease;">
+                                <input type="text" inputmode="text" pattern="^[a-f0-9.:]+$" minlength="5" maxlength="45" class="form-control" id="ip_from" name="ip_from" value="" style="width: 50%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; background-color: #2c3e50; color: white; font-size: 14px; transition: border-color 0.3s ease;">
                             <!-- </div> -->
                         </div>
                         <div class="rows" style="display:flex;">
@@ -178,9 +178,9 @@ $conn = null;
                         </div>
                     </form>
                 </div>
-                <div class="card-body" style="max-width: 500px; background: #1a2a30; border-radius: 10px; padding: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);     margin-top: 5rem; overflow: hidden; transition: all 0.3s ease-in-out;">
-                    <div style="width:100%; border: 0; padding: 0; text-align: center;">
-                        <h3>Search By IP or Finger print</h3>
+                <div class="card-body" style="max-width: 600px; background: #1a2a30; border-radius: 10px; padding: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);     margin-top: 5rem; overflow: hidden; transition: all 0.3s ease-in-out;">
+                    <div style="width:100%; border: 0; padding: 0; text-align: center; margin-bottom: 10px;">
+                        <h4 style="line-height: 1.5rem">Search By IP or Finger print</h4>
                         <form method='get' action="bans.php" id="searchForm">
                             <input type='text' name='search' placeholder="Search" value='<?php echo $searchTerm; ?>' style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; background-color: #2c3e50; color: white; font-size: 14px; transition: border-color 0.3s ease;">
                             <button class="btn btn-primary" type='submit' value='Submit'>Submit</button>
@@ -188,7 +188,7 @@ $conn = null;
                         </form>
                     </div>
                     <div style="width:100%; border: 0; padding: 0; text-align: center;">
-                        <h3>Sort by</h3>
+                        <h4 style="line-height: 1.5rem">Sort by</h4>
                         <form method="get" action="bans.php">
                             <select id="filter_status" name="filter_status" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; background-color: #2c3e50; color: white; font-size: 14px;">
                                 <?php foreach ($statusOptions as $key => $label): ?>

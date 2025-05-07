@@ -17,7 +17,6 @@
     ">Temporary Blocks</a>
 
     <a href="bans.php" style="
-        margin: 0 10px;
         padding: 6px 0;
         color: #ffffff;
         text-decoration: none;
