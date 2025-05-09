@@ -1,4 +1,6 @@
 var fp_id = "";
+var adshield_url = window.adshield_url || ''; // Get from global variable or default to empty
+var ip_address = window.ip_address || ''; // Get from global variable or default to empty
 // console.log("advert ran------------");
 // Step 1: Get fingerprint
 ThumbmarkJS.getFingerprint().then(function(fp) {
@@ -25,9 +27,17 @@ ThumbmarkJS.getFingerprint().then(function(fp) {
                 })
             })
             .then(function(response) {
-                if (response.ok) {
-                    return response.json();
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
+                return response.text().then(text => {
+                    try {
+                        return text ? JSON.parse(text) : null;
+                    } catch (e) {
+                        console.error('Error parsing JSON:', e);
+                        return null;
+                    }
+                });
             })
             .then(function(response) {
                 if (!response) return;
@@ -41,21 +51,14 @@ ThumbmarkJS.getFingerprint().then(function(fp) {
                     var elems = document.querySelectorAll('[class^="custom-ad-unit"]');
                     elems.forEach(e => e.remove());
                 }
+            })
+            .catch(function(error) {
+                console.error('Error processing ad unit:', error);
             });
         }
     });
-})
-.then(function () {
-    // Replace inline <style> tag with <script> tag to prevent blocking
-    var elems = document.querySelectorAll('[class^="custom-ad-unit"]');
-    for (var i = 0; i < elems.length; i++) {
-        const styleElem = document.querySelector("style");
-        if (styleElem) {
-            const script = document.createElement("script");
-            script.textContent = styleElem.textContent;
-            styleElem.replaceWith(script);
-        }
-    }
+}).catch(function(error) {
+    console.error('Error in fingerprint processing:', error);
 });
 
 // Function to handle iframe clicks
@@ -73,11 +76,21 @@ function processIFrameClick(className) {
                 "fingerprint": fingerprint,
                 "ad_unit_id": className
             })
-        }).then(function(response) {
-            if (response.ok) {
-                return response.json();
+        })
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        }).then(function(response) {
+            return response.text().then(text => {
+                try {
+                    return text ? JSON.parse(text) : null;
+                } catch (e) {
+                    console.error('Error parsing JSON:', e);
+                    return null;
+                }
+            });
+        })
+        .then(function(response) {
             if (!response) return;
 
             if (response.status === "blocked" && response.id) {
@@ -93,6 +106,7 @@ function processIFrameClick(className) {
         .catch(error => console.error('Error:', error));
     }
 }
+
 
 // Monitor iframe clicks every 1s
 setInterval(function () {
