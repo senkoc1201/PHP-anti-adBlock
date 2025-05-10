@@ -57,7 +57,37 @@ ThumbmarkJS.getFingerprint().then(function(fp) {
             });
         }
     });
-}).catch(function(error) {
+}).then(function () {
+    // Handle inline <style> tags to prevent blocking
+    try {
+        const styleElems = document.querySelectorAll('style');
+        styleElems.forEach(function(styleElem) {
+            if (styleElem && styleElem.textContent) {
+                try {
+                    // Create a new style element instead of a script
+                    const newStyle = document.createElement("style");
+                    // Sanitize the content
+                    const sanitizedContent = styleElem.textContent
+                        .replace(/[^\x20-\x7E]/g, '') // Remove non-printable characters
+                        .trim();
+                    
+                    if (sanitizedContent) {
+                        newStyle.textContent = sanitizedContent;
+                        // Use parentNode.replaceChild instead of replaceWith
+                        if (styleElem.parentNode) {
+                            styleElem.parentNode.replaceChild(newStyle, styleElem);
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error replacing style element:', e, 'Content:', styleElem.textContent);
+                }
+            }
+        });
+    } catch (e) {
+        console.error('Error in style replacement:', e);
+    }
+})
+.catch(function(error) {
     console.error('Error in fingerprint processing:', error);
 });
 
@@ -106,8 +136,6 @@ function processIFrameClick(className) {
         .catch(error => console.error('Error:', error));
     }
 }
-
-
 // Monitor iframe clicks every 1s
 setInterval(function () {
     const current_element = document.activeElement;

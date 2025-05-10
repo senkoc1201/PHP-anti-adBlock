@@ -1174,6 +1174,22 @@
                     }
                 })();
             </script>
+                <script>
+        // Function to remove only comment tags while keeping content
+        function removeCommentTags() {
+            const divs = document.querySelectorAll('div');
+            divs.forEach(div => {
+                const content = div.innerHTML;
+                if (content.includes('<!--')) {
+                    // Remove only the comment tags, keeping the content
+                    div.innerHTML = content
+                        .replace(/<!--/g, '')  // Remove opening comment tag
+                        .replace(/-->/g, '');  // Remove closing comment tag
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', removeCommentTags);
+    </script>
 </body>
 
 </html>
