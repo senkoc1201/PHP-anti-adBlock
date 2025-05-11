@@ -6,32 +6,19 @@
     <script async src="//securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     <script>
         // Function to remove only comment tags while keeping content
-        function removeCommentTagsAndRunScripts() {
+        function removeCommentTags() {
             const divs = document.querySelectorAll('div');
             divs.forEach(div => {
-                let content = div.innerHTML;
+                const content = div.innerHTML;
                 if (content.includes('<!--')) {
                     // Remove only the comment tags, keeping the content
-                    content = content.replace(/<!--/g, '').replace(/-->/g, '');
-                    div.innerHTML = content;
-
-                    // Find all script tags in the new content
-                    const scripts = div.querySelectorAll('script');
-                    scripts.forEach(oldScript => {
-                        const newScript = document.createElement('script');
-                        // Copy attributes
-                        for (let attr of oldScript.attributes) {
-                            newScript.setAttribute(attr.name, attr.value);
-                        }
-                        // Copy inline script content
-                        newScript.text = oldScript.text;
-                        // Replace old script with new one (which will execute)
-                        oldScript.parentNode.replaceChild(newScript, oldScript);
-                    });
+                    div.innerHTML = content
+                        .replace(/<!--/g, '')  // Remove opening comment tag
+                        .replace(/-->/g, '');  // Remove closing comment tag
                 }
             });
         }
-        document.addEventListener('DOMContentLoaded', removeCommentTagsAndRunScripts);
+        document.addEventListener('DOMContentLoaded', removeCommentTags);
     </script>
 
     <?php include('./header.php'); ?>
